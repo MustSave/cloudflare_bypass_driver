@@ -17,7 +17,7 @@ class Chrome(uc.Chrome):
 
         if bypass:
             try:
-                super().find_element(By.CLASS_NAME, "ray-id")
+                super().find_element(By.ID, "trk_jschal_js")
             except NoSuchElementException:
                 return
             else:
@@ -27,7 +27,7 @@ class Chrome(uc.Chrome):
     def wait_until_cf_bypass(self):
         for _ in range(self.max_retry):
             try:
-                WebDriverWait(self, 5.5).until(EC.invisibility_of_element_located((By.CLASS_NAME, 'ray-id')))
+                WebDriverWait(self, 5.5).until(EC.invisibility_of_element_located((By.ID, 'trk_jschal_js')))
             except TimeoutException:
                 super().refresh()
             else:
